@@ -171,7 +171,8 @@ ShellInABox.prototype.sendRequest = function(request) {
     request                  = new XMLHttpRequest();
   }
   request.open('POST', this.url + '?', true);
-  request.timeout = 30000; // Don't leave POST pending forever: force 30s timeout to prevent HTTP Proxy thread hijack
+  // modify because 'service network restart' operation is slow?
+  request.timeout = 60000; // Don't leave POST pending forever: force 30s timeout to prevent HTTP Proxy thread hijack
   request.setRequestHeader('Cache-Control', 'no-cache');
   request.setRequestHeader('Content-Type',
                            'application/x-www-form-urlencoded; charset=utf-8');
